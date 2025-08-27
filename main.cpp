@@ -20,6 +20,16 @@ void notifications()
     mom.testing(); // you can call slot as function with mom.wake(); but you will lose the connection between objects. there is no sender
 }
 
+void testPointer(QObject *obj)
+{
+    qInfo() << obj;
+}
+
+void testAdress(QObject &obj)
+{
+    qInfo() <<&obj;
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -36,7 +46,12 @@ int main(int argc, char *argv[])
     // to a.exec() or use the Non-Qt Plain C++ Application template.
 
     //lifecycle();
-    notifications();
+    //notifications();
+
+    QObject person;
+
+    testPointer(&person);
+    testAdress(person);
 
     return a.exec();
 }
